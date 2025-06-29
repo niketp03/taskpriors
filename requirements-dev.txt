@@ -1,0 +1,9 @@
+# requirements-dev.txt – developer tools
+-r requirements.txt
+pytest
+coverage[toml]
+pytest-cov
+ruff
+black
+build
+twine

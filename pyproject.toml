@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "taskpriors"
+version = "0.1.0"
+description = "Library for analyzing representation learning models in PyTorch."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [ { name = "niketpatel" } ]
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "coverage[toml]",
+    "pytest-cov",
+    "ruff",
+    "black",
+]
+
+[project.scripts]
+yourcli = "taskpriors.cli:main"
