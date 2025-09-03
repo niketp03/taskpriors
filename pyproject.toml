@@ -16,6 +16,11 @@ dependencies = [
     "matplotlib>=3.0",
     "torchvision>=0.15",
     "scikit-learn>=1.0",
+    "timm>=0.9.0",
+    "datasets>=2.0.0",
+    "tqdm>=4.60.0",
+    "seaborn>=0.13.2",
+    "adjusttext>=1.3.0",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

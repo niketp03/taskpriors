@@ -40,8 +40,9 @@
 ### Usage
 
 After installation, you can run the simple intro script:
+
     ```bash
-    uv sync --no-dev
+????
     ```
 
 You can also now run any of the scripts used to generate the figures from the paper.

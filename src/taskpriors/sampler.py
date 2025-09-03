@@ -7,14 +7,14 @@ import torch
 from torch.utils.data import DataLoader
 
 __all__: Sequence[str] = (
-    "centre_kernel_factors",
+    "center_kernel_factors",
     "sample_labels_from_kernel",
     "sample_labels_from_features",
     "sample_labels_from_model",
 )
 
-def centre_kernel_factors(B: np.ndarray) -> np.ndarray:
-    """Return *centred* low‑rank factors ``B_c``.
+def center_kernel_factors(B: np.ndarray) -> np.ndarray:
+    """Return *centered* low‑rank factors ``B_c``.
 
     Subtracts the column‑wise mean so that the induced kernel has zero row/column
     sums—a standard normalisation step for the Potts/task‑prior sampler.
@@ -36,7 +36,7 @@ def sample_labels_from_kernel(
     temperature: float = 1.0,
     seed: Optional[int] = None,
 ) -> np.ndarray:
-    """Sample one multi‑class labeling from *centred* low‑rank factors.
+    """Sample one multi‑class labeling from *centerd* low‑rank factors.
 
     Implements the prefix sampler 
 
@@ -76,7 +76,7 @@ def sample_labels_from_features(
     num_classes: int,
     temperature: float = 1.0,
     seed: Optional[int] = None,
-    centre: bool = True,
+    center: bool = True,
 ) -> np.ndarray:
     """Sample labels given a raw feature matrix.
 
@@ -84,7 +84,7 @@ def sample_labels_from_features(
     ----------
     features:
         ``(n, r)`` array‑like (NumPy or Torch).  Rows correspond to examples.
-    centre:
+    center:
         If *True* (default) subtract the mean feature vector before sampling.
     num_classes, temperature, seed:
         Same semantics as :pyfunc:`sample_labels_from_kernel`.
@@ -95,7 +95,7 @@ def sample_labels_from_features(
     else:
         feats_np = np.asarray(features)
 
-    B = centre_kernel_factors(feats_np) if centre else np.asarray(feats_np)
+    B = center_kernel_factors(feats_np) if center else np.asarray(feats_np)
 
     return sample_labels_from_kernel(
         B,

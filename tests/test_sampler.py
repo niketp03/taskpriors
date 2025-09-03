@@ -5,15 +5,15 @@ from torch import nn
 from torch.utils.data import TensorDataset, DataLoader
 
 from taskpriors.sampler import (
-    centre_kernel_factors,
+    center_kernel_factors,
     sample_labels_from_kernel,
     sample_labels_from_model,
 )
 
 
-def test_centre_kernel_factors_basic():
+def test_center_kernel_factors_basic():
     B = np.array([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]])
-    Bc = centre_kernel_factors(B)
+    Bc = center_kernel_factors(B)
     expected = B - B.mean(axis=0, keepdims=True)
     assert np.allclose(Bc, expected)
     # Check column means are zero
@@ -23,9 +23,9 @@ def test_centre_kernel_factors_basic():
 
 
 @pytest.mark.parametrize("arr", [np.zeros(3), np.zeros((2, 2, 2))])
-def test_centre_kernel_factors_invalid_dim(arr):
+def test_center_kernel_factors_invalid_dim(arr):
     with pytest.raises(ValueError):
-        centre_kernel_factors(arr)
+        center_kernel_factors(arr)
 
 
 def test_sample_labels_from_kernel_invalid_params():
@@ -68,9 +68,9 @@ def test_sample_labels_from_model_basic_pipeline():
         model, loader, num_classes=num_classes, temperature=temperature, seed=seed, device="cpu"
     )
 
-    # Direct sampling using centred kernel factors
+    # Direct sampling using centerd kernel factors
     B = x.numpy()
-    B = centre_kernel_factors(B)
+    B = center_kernel_factors(B)
     labels_direct = sample_labels_from_kernel(
         B, num_classes=num_classes, temperature=temperature, seed=seed
     )
@@ -110,7 +110,7 @@ def test_sample_labels_from_model_with_feature_fn():
     )
 
     B = (x * 2.0).numpy()
-    B = centre_kernel_factors(B)
+    B = center_kernel_factors(B)
     labels_direct = sample_labels_from_kernel(
         B, num_classes=num_classes, temperature=temperature, seed=seed
     )

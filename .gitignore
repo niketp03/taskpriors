@@ -5,3 +5,5 @@ __pycache__/
 # Ignore example data directory
 examples/data/
 .DS_Store
+
+*.pt
