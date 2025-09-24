@@ -21,6 +21,9 @@ dependencies = [
     "tqdm>=4.60.0",
     "seaborn>=0.13.2",
     "adjusttext>=1.3.0",
+    "transformers>=4.56.1",
+    "sentencepiece>=0.2.1",
+    "protobuf>=6.32.0",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

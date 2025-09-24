@@ -7,3 +7,10 @@ examples/data/
 .DS_Store
 
 *.pt
+
+*.json
+*.pdf
+
+*.npy
+
+*.png
